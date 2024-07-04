@@ -1,9 +1,15 @@
-﻿namespace Entity_Framework_Csharp;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class categoria
+namespace Entity_Framework_Csharp;
+
+public class Categoria
 {
-    public Guid categoriaId {get;set};
-    public string Nombre {get;set};
-    public string Descripcion {get;set};
-    public virtual ICollection<Tarea> Tareas {get;set};
+    [Key]
+    public Guid CategoriaId {get;set;}
+
+    [Required]
+    [MaxLength(150)]
+    public string Nombre {get;set;}
+    public string Descripcion {get;set;}
+    public virtual ICollection<Tarea> Tareas {get;set;}
 }
