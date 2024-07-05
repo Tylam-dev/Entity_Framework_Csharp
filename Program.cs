@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDb"));
+// builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDb"));
+builder.Services.AddNpgsql<TareasContext>(builder.Configuration.GetConnectionString("tarea-db"));
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
